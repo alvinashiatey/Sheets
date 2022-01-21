@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import Sheet from "./lib/main.js";
+      let s = new Sheet("1F1nb0IVZg47Z79TuuugTdYKkwqkj8YZsdux7b0Ue8hY");
+      s.getMyData().then((data) => console.log(data));
+    </script>
+  </body>
+</html>
