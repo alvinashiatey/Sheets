@@ -9,6 +9,10 @@
   "devDependencies": {
     "vite": "^2.7.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvinashiatey/Sheets"
+  },
   "files": [
     "dist"
   ],

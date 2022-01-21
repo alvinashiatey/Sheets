@@ -7,7 +7,7 @@ module.exports = defineConfig({
     minify: "terser",
     lib: {
       entry: path.resolve(__dirname, "lib/main.js"),
-      name: "sheets",
+      name: "Sheets",
       fileName: (format) => `sheets.${format}.js`,
     },
   },
