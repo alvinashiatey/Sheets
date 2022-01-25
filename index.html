@@ -7,10 +7,56 @@
   </head>
   <body>
     <div id="app"></div>
+
     <script type="module">
-      import Sheet from "./lib/main.js";
-      let s = new Sheet("1F1nb0IVZg47Z79TuuugTdYKkwqkj8YZsdux7b0Ue8hY");
-      s.getMyData().then((data) => console.log(data));
+      import Sheets from "./lib/main.js";
+      let app = document.getElementById("app");
+      let s = new Sheets("1F1nb0IVZg47Z79TuuugTdYKkwqkj8YZsdux7b0Ue8hY");
+      s.getMyData().then((d) => {
+        // fetch for data in a specific row
+        let heading = s.getKey("Meta-Title");
+        // Create an element and append to selector
+        s.createElement({
+          tag: "h1",
+          content: heading,
+        }).appendTo("#app");
+
+        let descriptions = s.getKey("Meta-Description");
+        s.createElement({
+          tag: "p",
+          content: descriptions,
+        }).appendTo("#app");
+
+        let about = s.getKey("About");
+        s.createElement({
+          tag: "p",
+          content: about,
+        }).appendTo("#app");
+
+        // Collapse rows into an array of object for easy looping
+        let ul = s.collapseKeys("UL-Images", "UL-Project", "UL-Date");
+        for (let row of ul) {
+          s.createElement({
+            tag: "div",
+            children: [
+              {
+                tag: "p",
+                content: row["UL-Project"],
+              },
+              {
+                tag: "img",
+                attributes: {
+                  src: row["UL-Images"],
+                },
+              },
+              {
+                tag: "p",
+                content: row["UL-Date"],
+              },
+            ],
+          }).appendTo("#app");
+        }
+      });
     </script>
   </body>
 </html>
