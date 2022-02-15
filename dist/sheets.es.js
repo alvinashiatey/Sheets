@@ -62,6 +62,9 @@ class Sheets {
     }
     return res;
   }
+  getGoogleDriveImage(id) {
+    return `https://drive.google.com/uc?export=view&id=${id}`;
+  }
   createElement({ tag, className, content, attributes, children }) {
     let acceptedTags = [
       "div",
